@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Data\" />
+    <None Remove="Services\" />
+    <None Remove="Data\DbContext\" />
+    <None Remove="Data\Entities\" />
+    <None Remove="Data\Repositories\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\" />
+    <Folder Include="Services\" />
+    <Folder Include="Data\DbContext\" />
+    <Folder Include="Data\Entities\" />
+    <Folder Include="Data\Repositories\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\MyPro.App.Core\MyPro.App.Core.csproj" />
+  </ItemGroup>
+</Project>

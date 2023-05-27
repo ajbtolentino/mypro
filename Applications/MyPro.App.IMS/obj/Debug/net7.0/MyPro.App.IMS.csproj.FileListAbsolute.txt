@@ -1,0 +1,15 @@
+/Users/allan/Projects/MyPro/Applications/MyPro.App.IMS/bin/Debug/net7.0/MyPro.App.IMS.deps.json
+/Users/allan/Projects/MyPro/Applications/MyPro.App.IMS/bin/Debug/net7.0/MyPro.App.IMS.dll
+/Users/allan/Projects/MyPro/Applications/MyPro.App.IMS/bin/Debug/net7.0/MyPro.App.IMS.pdb
+/Users/allan/Projects/MyPro/Applications/MyPro.App.IMS/bin/Debug/net7.0/MyPro.App.Core.dll
+/Users/allan/Projects/MyPro/Applications/MyPro.App.IMS/bin/Debug/net7.0/MyPro.App.Core.pdb
+/Users/allan/Projects/MyPro/Applications/MyPro.App.IMS/obj/Debug/net7.0/MyPro.App.IMS.csproj.AssemblyReference.cache
+/Users/allan/Projects/MyPro/Applications/MyPro.App.IMS/obj/Debug/net7.0/MyPro.App.IMS.GeneratedMSBuildEditorConfig.editorconfig
+/Users/allan/Projects/MyPro/Applications/MyPro.App.IMS/obj/Debug/net7.0/MyPro.App.IMS.AssemblyInfoInputs.cache
+/Users/allan/Projects/MyPro/Applications/MyPro.App.IMS/obj/Debug/net7.0/MyPro.App.IMS.AssemblyInfo.cs
+/Users/allan/Projects/MyPro/Applications/MyPro.App.IMS/obj/Debug/net7.0/MyPro.App.IMS.csproj.CoreCompileInputs.cache
+/Users/allan/Projects/MyPro/Applications/MyPro.App.IMS/obj/Debug/net7.0/MyPro.App.IMS.csproj.CopyComplete
+/Users/allan/Projects/MyPro/Applications/MyPro.App.IMS/obj/Debug/net7.0/MyPro.App.IMS.dll
+/Users/allan/Projects/MyPro/Applications/MyPro.App.IMS/obj/Debug/net7.0/refint/MyPro.App.IMS.dll
+/Users/allan/Projects/MyPro/Applications/MyPro.App.IMS/obj/Debug/net7.0/MyPro.App.IMS.pdb
+/Users/allan/Projects/MyPro/Applications/MyPro.App.IMS/obj/Debug/net7.0/ref/MyPro.App.IMS.dll

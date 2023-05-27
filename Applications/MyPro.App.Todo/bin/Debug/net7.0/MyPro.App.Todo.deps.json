@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "MyPro.App.Todo/1.0.0": {
+        "dependencies": {
+          "MyPro.App.Core": "1.0.0"
+        },
+        "runtime": {
+          "MyPro.App.Todo.dll": {}
+        }
+      },
+      "MyPro.App.Core/1.0.0": {
+        "runtime": {
+          "MyPro.App.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MyPro.App.Todo/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MyPro.App.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
