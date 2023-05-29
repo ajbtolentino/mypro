@@ -14,4 +14,10 @@
     <Folder Include="Entities\" />
     <Folder Include="Contracts\" />
   </ItemGroup>
+  <ItemGroup>
+      <InternalsVisibleTo Include="MyPro.App.Application" />
+      <InternalsVisibleTo Include="MyPro.App.Infrastructure" />
+      <InternalsVisibleTo Include="MyPro.Todo.Infrastructure" />
+      <InternalsVisibleTo Include="MyPro.IMS.Infrastructure" />
+  </ItemGroup>
 </Project>

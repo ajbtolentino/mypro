@@ -13,11 +13,5 @@ namespace MyPro.App.Application.Contracts.Repositories
         IEnumerable<TEntity> GetAll();
         TEntity Update(TEntity entity);
     }
-
-    internal interface IGenericRepository<TEntity>
-        where TEntity : IEntity<int>
-    {
-
-    }
 }
 

@@ -5,9 +5,7 @@ namespace MyPro.App.Infrastructure.DbContexts
 {
     public class EFDbContext : IApplicationDbContext
     {
-        public EFDbContext()
-        {
-        }
+
     }
 }
 

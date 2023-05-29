@@ -1,8 +1,8 @@
 ﻿using System;
 using MyPro.App.Infrastructure.DbContexts;
-using MyPro.App.Todo.Contracts.DbContexts;
+using MyPro.Todo.Infrastructure.Contracts.DbContexts;
 
-namespace MyPro.App.Todo.Infrastructure.Data.Todo
+namespace MyPro.Todo.Infrastructure.DbContexts
 {
     internal class TodoEFDbContext : EFDbContext, ITodoDbContext
     {

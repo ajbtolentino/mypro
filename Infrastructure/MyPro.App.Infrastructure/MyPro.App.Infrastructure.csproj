@@ -26,6 +26,7 @@
     <ProjectReference Include="..\..\Core\MyPro.App.Domain\MyPro.App.Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
-      <InternalsVisibleTo Include="MyPro.App.Todo" />
+      <InternalsVisibleTo Include="MyPro.Todo.Infrastructure" />
+      <InternalsVisibleTo Include="MyPro.IMS.Infrastructure" />
   </ItemGroup>
 </Project>

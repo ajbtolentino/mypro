@@ -7,29 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="DbContext\" />
     <None Remove="Contracts\" />
-    <None Remove="Contracts\Repositories\" />
-    <None Remove="Contracts\DbContexts\" />
-    <None Remove="Contracts\Services\" />
-    <None Remove="Entities\" />
     <None Remove="DbContexts\" />
+    <None Remove="Entities\" />
     <None Remove="Repositories\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Contracts\" />
-    <Folder Include="Contracts\Repositories\" />
-    <Folder Include="Contracts\DbContexts\" />
-    <Folder Include="Contracts\Services\" />
-    <Folder Include="Entities\" />
     <Folder Include="DbContexts\" />
+    <Folder Include="Entities\" />
     <Folder Include="Repositories\" />
   </ItemGroup>
   <ItemGroup>
-      <InternalsVisibleTo Include="MyPro.App.Infrastructure" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\MyPro.App.Infrastructure\MyPro.App.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Core\MyPro.App.Application\MyPro.App.Application.csproj" />
-    <ProjectReference Include="..\..\Infrastructure\MyPro.App.Infrastructure\MyPro.App.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Core\MyPro.App.Domain\MyPro.App.Domain.csproj" />
   </ItemGroup>
 </Project>

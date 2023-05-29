@@ -21,6 +21,7 @@
   </ItemGroup>
   <ItemGroup>
       <InternalsVisibleTo Include="MyPro.App.Infrastructure" />
-      <InternalsVisibleTo Include="MyPro.App.Todo" />
+      <InternalsVisibleTo Include="MyPro.Todo.Infrastructure" />
+      <InternalsVisibleTo Include="MyPro.IMS.Infrastructure" />
   </ItemGroup>
 </Project>

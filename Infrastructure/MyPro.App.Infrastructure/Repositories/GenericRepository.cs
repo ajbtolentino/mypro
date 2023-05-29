@@ -4,24 +4,21 @@ using MyPro.App.Domain.Contracts;
 
 namespace MyPro.App.Infrastructure.Repositories
 {
-    public class GenericRepository<TEntity> : IGenericRepository<TEntity>
-        where TEntity : IEntity<int>
+    internal class GenericRepository<TEntity, TKey> : IGenericRepository<TEntity, TKey>
+        where TEntity : IEntity<TKey>
+        where TKey : struct
     {
-        public GenericRepository()
-        {
-        }
-
         public TEntity Add(TEntity entity)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(int id)
+        public void Delete(TKey id)
         {
             throw new NotImplementedException();
         }
 
-        public TEntity Get(int id)
+        public TEntity Get(TKey id)
         {
             throw new NotImplementedException();
         }
