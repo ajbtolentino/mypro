@@ -7,16 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Exceptions\" />
-    <None Remove="Enums\" />
     <None Remove="Contracts\" />
-    <None Remove="Repositories\" />
+    <None Remove="Contracts\Repositories\" />
+    <None Remove="Contracts\DbContexts\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Exceptions\" />
-    <Folder Include="Enums\" />
     <Folder Include="Contracts\" />
-    <Folder Include="Repositories\" />
+    <Folder Include="Contracts\Repositories\" />
+    <Folder Include="Contracts\DbContexts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyPro.App.Domain\MyPro.App.Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
       <InternalsVisibleTo Include="MyPro.App.Infrastructure" />

@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Interceptors\" />
+    <None Remove="Data\" />
+    <None Remove="Data\IMS\" />
+    <None Remove="Data\Todo\" />
+    <None Remove="Repositories\" />
+    <None Remove="Services\" />
+    <None Remove="DbContexts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interceptors\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="Services\" />
+    <Folder Include="DbContexts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\MyPro.App.Application\MyPro.App.Application.csproj" />
+    <ProjectReference Include="..\..\Core\MyPro.App.Domain\MyPro.App.Domain.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+      <InternalsVisibleTo Include="MyPro.App.Todo" />
+  </ItemGroup>
+</Project>

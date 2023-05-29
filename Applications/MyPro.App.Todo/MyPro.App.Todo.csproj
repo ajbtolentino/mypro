@@ -7,20 +7,29 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Data\" />
-    <None Remove="Data\DbContext\" />
-    <None Remove="Data\Entities\" />
-    <None Remove="Data\Repositories\" />
-    <None Remove="Services\" />
+    <None Remove="DbContext\" />
+    <None Remove="Contracts\" />
+    <None Remove="Contracts\Repositories\" />
+    <None Remove="Contracts\DbContexts\" />
+    <None Remove="Contracts\Services\" />
+    <None Remove="Entities\" />
+    <None Remove="DbContexts\" />
+    <None Remove="Repositories\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Data\" />
-    <Folder Include="Data\DbContext\" />
-    <Folder Include="Data\Entities\" />
-    <Folder Include="Data\Repositories\" />
-    <Folder Include="Services\" />
+    <Folder Include="Contracts\" />
+    <Folder Include="Contracts\Repositories\" />
+    <Folder Include="Contracts\DbContexts\" />
+    <Folder Include="Contracts\Services\" />
+    <Folder Include="Entities\" />
+    <Folder Include="DbContexts\" />
+    <Folder Include="Repositories\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MyPro.App.Core\MyPro.App.Core.csproj" />
+      <InternalsVisibleTo Include="MyPro.App.Infrastructure" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\MyPro.App.Application\MyPro.App.Application.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\MyPro.App.Infrastructure\MyPro.App.Infrastructure.csproj" />
   </ItemGroup>
 </Project>

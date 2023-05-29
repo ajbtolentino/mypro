@@ -7,20 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Data\" />
     <None Remove="Services\" />
     <None Remove="Data\DbContext\" />
     <None Remove="Data\Entities\" />
     <None Remove="Data\Repositories\" />
+    <None Remove="Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Data\" />
     <Folder Include="Services\" />
     <Folder Include="Data\DbContext\" />
     <Folder Include="Data\Entities\" />
     <Folder Include="Data\Repositories\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\MyPro.App.Core\MyPro.App.Core.csproj" />
+    <Folder Include="Data\" />
   </ItemGroup>
 </Project>

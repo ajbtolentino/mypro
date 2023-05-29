@@ -1,0 +1,15 @@
+/Users/allan/Projects/MyPro/Core/MyPro.App.Application/bin/Debug/net7.0/MyPro.App.Application.deps.json
+/Users/allan/Projects/MyPro/Core/MyPro.App.Application/bin/Debug/net7.0/MyPro.App.Application.dll
+/Users/allan/Projects/MyPro/Core/MyPro.App.Application/bin/Debug/net7.0/MyPro.App.Application.pdb
+/Users/allan/Projects/MyPro/Core/MyPro.App.Application/bin/Debug/net7.0/MyPro.App.Domain.dll
+/Users/allan/Projects/MyPro/Core/MyPro.App.Application/bin/Debug/net7.0/MyPro.App.Domain.pdb
+/Users/allan/Projects/MyPro/Core/MyPro.App.Application/obj/Debug/net7.0/MyPro.App.Application.csproj.AssemblyReference.cache
+/Users/allan/Projects/MyPro/Core/MyPro.App.Application/obj/Debug/net7.0/MyPro.App.Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/allan/Projects/MyPro/Core/MyPro.App.Application/obj/Debug/net7.0/MyPro.App.Application.AssemblyInfoInputs.cache
+/Users/allan/Projects/MyPro/Core/MyPro.App.Application/obj/Debug/net7.0/MyPro.App.Application.AssemblyInfo.cs
+/Users/allan/Projects/MyPro/Core/MyPro.App.Application/obj/Debug/net7.0/MyPro.App.Application.csproj.CoreCompileInputs.cache
+/Users/allan/Projects/MyPro/Core/MyPro.App.Application/obj/Debug/net7.0/MyPro.App.Application.csproj.CopyComplete
+/Users/allan/Projects/MyPro/Core/MyPro.App.Application/obj/Debug/net7.0/MyPro.App.Application.dll
+/Users/allan/Projects/MyPro/Core/MyPro.App.Application/obj/Debug/net7.0/refint/MyPro.App.Application.dll
+/Users/allan/Projects/MyPro/Core/MyPro.App.Application/obj/Debug/net7.0/MyPro.App.Application.pdb
+/Users/allan/Projects/MyPro/Core/MyPro.App.Application/obj/Debug/net7.0/ref/MyPro.App.Application.dll

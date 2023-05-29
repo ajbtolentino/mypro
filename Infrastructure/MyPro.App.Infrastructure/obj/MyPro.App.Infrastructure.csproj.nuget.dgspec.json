@@ -1,0 +1,181 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/allan/Projects/MyPro/Infrastructure/MyPro.App.Infrastructure/MyPro.App.Infrastructure.csproj": {}
+  },
+  "projects": {
+    "/Users/allan/Projects/MyPro/Core/MyPro.App.Application/MyPro.App.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/allan/Projects/MyPro/Core/MyPro.App.Application/MyPro.App.Application.csproj",
+        "projectName": "MyPro.App.Application",
+        "projectPath": "/Users/allan/Projects/MyPro/Core/MyPro.App.Application/MyPro.App.Application.csproj",
+        "packagesPath": "/Users/allan/.nuget/packages/",
+        "outputPath": "/Users/allan/Projects/MyPro/Core/MyPro.App.Application/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/allan/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "/Users/allan/Downloads": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/Users/allan/Projects/MyPro/Core/MyPro.App.Domain/MyPro.App.Domain.csproj": {
+                "projectPath": "/Users/allan/Projects/MyPro/Core/MyPro.App.Domain/MyPro.App.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/allan/Projects/MyPro/Core/MyPro.App.Domain/MyPro.App.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/allan/Projects/MyPro/Core/MyPro.App.Domain/MyPro.App.Domain.csproj",
+        "projectName": "MyPro.App.Domain",
+        "projectPath": "/Users/allan/Projects/MyPro/Core/MyPro.App.Domain/MyPro.App.Domain.csproj",
+        "packagesPath": "/Users/allan/.nuget/packages/",
+        "outputPath": "/Users/allan/Projects/MyPro/Core/MyPro.App.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/allan/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "/Users/allan/Downloads": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/allan/Projects/MyPro/Infrastructure/MyPro.App.Infrastructure/MyPro.App.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/allan/Projects/MyPro/Infrastructure/MyPro.App.Infrastructure/MyPro.App.Infrastructure.csproj",
+        "projectName": "MyPro.App.Infrastructure",
+        "projectPath": "/Users/allan/Projects/MyPro/Infrastructure/MyPro.App.Infrastructure/MyPro.App.Infrastructure.csproj",
+        "packagesPath": "/Users/allan/.nuget/packages/",
+        "outputPath": "/Users/allan/Projects/MyPro/Infrastructure/MyPro.App.Infrastructure/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/allan/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "/Users/allan/Downloads": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/Users/allan/Projects/MyPro/Core/MyPro.App.Application/MyPro.App.Application.csproj": {
+                "projectPath": "/Users/allan/Projects/MyPro/Core/MyPro.App.Application/MyPro.App.Application.csproj"
+              },
+              "/Users/allan/Projects/MyPro/Core/MyPro.App.Domain/MyPro.App.Domain.csproj": {
+                "projectPath": "/Users/allan/Projects/MyPro/Core/MyPro.App.Domain/MyPro.App.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

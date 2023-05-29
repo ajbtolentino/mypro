@@ -3,17 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 25.0.1705.4
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPro.App.Core", "MyPro.App.Core\MyPro.App.Core.csproj", "{C25242AE-938B-48E6-ACC2-4CD1F305CD8A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPro.App.Api", "MyPro.App.Api\MyPro.App.Api.csproj", "{C45B0DF4-887B-4541-AF84-308DBF07AFB6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{1DA4E447-A6F7-4B48-94F0-BEF8199EFFC2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPro.App.IMS", "Applications\MyPro.App.IMS\MyPro.App.IMS.csproj", "{18A2F0E8-4EB8-4DE5-9709-C787554D6FA2}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPro.App.Todo", "Applications\MyPro.App.Todo\MyPro.App.Todo.csproj", "{ED034715-2D45-4BBD-AC51-EE2821FD8F8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPro.App.Infrastructure", "MyPro.App.Infrastructure\MyPro.App.Infrastructure.csproj", "{96028767-0ACD-4DDE-B99B-8FF03CFABDC2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{8C77D513-30F2-467B-B8A2-464BEF643C28}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{F45E6756-E7AF-4D52-9F3A-B05CECBDBC2B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPro.App.Infrastructure", "Infrastructure\MyPro.App.Infrastructure\MyPro.App.Infrastructure.csproj", "{D6D2BC85-7599-4979-9891-8522CC0410E2}"
+EndProject
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "MyPro.App.IMS", "Applications\MyPro.App.IMS\MyPro.App.IMS.csproj", "{4CE0B465-795F-4B6C-BA4C-F63E5FEE1702}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPro.App.Domain", "Core\MyPro.App.Domain\MyPro.App.Domain.csproj", "{C9DFCACF-48C8-4932-A9CA-21A86ED09DDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPro.App.Application", "Core\MyPro.App.Application\MyPro.App.Application.csproj", "{2E2066C6-567A-4037-A9FF-CA5097E50A0F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,26 +27,30 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C25242AE-938B-48E6-ACC2-4CD1F305CD8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C25242AE-938B-48E6-ACC2-4CD1F305CD8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C25242AE-938B-48E6-ACC2-4CD1F305CD8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C25242AE-938B-48E6-ACC2-4CD1F305CD8A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C45B0DF4-887B-4541-AF84-308DBF07AFB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C45B0DF4-887B-4541-AF84-308DBF07AFB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C45B0DF4-887B-4541-AF84-308DBF07AFB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C45B0DF4-887B-4541-AF84-308DBF07AFB6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{18A2F0E8-4EB8-4DE5-9709-C787554D6FA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{18A2F0E8-4EB8-4DE5-9709-C787554D6FA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{18A2F0E8-4EB8-4DE5-9709-C787554D6FA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{18A2F0E8-4EB8-4DE5-9709-C787554D6FA2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ED034715-2D45-4BBD-AC51-EE2821FD8F8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ED034715-2D45-4BBD-AC51-EE2821FD8F8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED034715-2D45-4BBD-AC51-EE2821FD8F8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED034715-2D45-4BBD-AC51-EE2821FD8F8D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{96028767-0ACD-4DDE-B99B-8FF03CFABDC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{96028767-0ACD-4DDE-B99B-8FF03CFABDC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{96028767-0ACD-4DDE-B99B-8FF03CFABDC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{96028767-0ACD-4DDE-B99B-8FF03CFABDC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6D2BC85-7599-4979-9891-8522CC0410E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6D2BC85-7599-4979-9891-8522CC0410E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6D2BC85-7599-4979-9891-8522CC0410E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6D2BC85-7599-4979-9891-8522CC0410E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CE0B465-795F-4B6C-BA4C-F63E5FEE1702}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CE0B465-795F-4B6C-BA4C-F63E5FEE1702}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CE0B465-795F-4B6C-BA4C-F63E5FEE1702}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CE0B465-795F-4B6C-BA4C-F63E5FEE1702}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9DFCACF-48C8-4932-A9CA-21A86ED09DDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9DFCACF-48C8-4932-A9CA-21A86ED09DDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9DFCACF-48C8-4932-A9CA-21A86ED09DDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9DFCACF-48C8-4932-A9CA-21A86ED09DDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E2066C6-567A-4037-A9FF-CA5097E50A0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E2066C6-567A-4037-A9FF-CA5097E50A0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E2066C6-567A-4037-A9FF-CA5097E50A0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E2066C6-567A-4037-A9FF-CA5097E50A0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,7 +59,10 @@ Global
 		SolutionGuid = {FE1559A4-5E0C-4423-8E17-7ECB83ACBB42}
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{18A2F0E8-4EB8-4DE5-9709-C787554D6FA2} = {1DA4E447-A6F7-4B48-94F0-BEF8199EFFC2}
 		{ED034715-2D45-4BBD-AC51-EE2821FD8F8D} = {1DA4E447-A6F7-4B48-94F0-BEF8199EFFC2}
+		{D6D2BC85-7599-4979-9891-8522CC0410E2} = {F45E6756-E7AF-4D52-9F3A-B05CECBDBC2B}
+		{4CE0B465-795F-4B6C-BA4C-F63E5FEE1702} = {1DA4E447-A6F7-4B48-94F0-BEF8199EFFC2}
+		{C9DFCACF-48C8-4932-A9CA-21A86ED09DDF} = {8C77D513-30F2-467B-B8A2-464BEF643C28}
+		{2E2066C6-567A-4037-A9FF-CA5097E50A0F} = {8C77D513-30F2-467B-B8A2-464BEF643C28}
 	EndGlobalSection
 EndGlobal
