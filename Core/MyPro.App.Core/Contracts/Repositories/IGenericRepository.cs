@@ -10,7 +10,7 @@ namespace MyPro.App.Core.Contracts.Repositories
         TEntity Add(TEntity entity);
         void Delete(TKey id);
         TEntity Get(TKey id);
-        IEnumerable<TEntity> GetAll();
+        IQueryable<TEntity> GetAll();
         TEntity Update(TEntity entity);
     }
 }

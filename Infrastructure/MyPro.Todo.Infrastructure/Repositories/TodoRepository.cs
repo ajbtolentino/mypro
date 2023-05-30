@@ -15,7 +15,7 @@ namespace MyPro.Todo.Infrastructure.Repositories
 
         public IEnumerable<Entities.Todo> GetAllActive()
         {
-            return null;
+            return new List<Entities.Todo>();
         }
     }
 }
