@@ -1,11 +1,10 @@
 ﻿using System;
-using MyPro.App.Domain.Contracts;
+using MyPro.App.Core.Contracts.Entities;
+using MyPro.App.Domain.Entities;
 
 namespace MyPro.Todo.Infrastructure.Entities
 {
-    internal class Todo : IEntity<int>
+    internal class Todo : BaseEntity, IEntity<int>
     {
-        public int Id { get; set; }
     }
 }
-

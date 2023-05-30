@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MyPro.App.Domain.Contracts
+namespace MyPro.App.Core.Contracts.Entities
 {
     internal interface IEntity<TKey>
         where TKey : struct

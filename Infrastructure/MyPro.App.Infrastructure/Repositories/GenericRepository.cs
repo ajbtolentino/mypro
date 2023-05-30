@@ -1,13 +1,22 @@
 ﻿using System;
-using MyPro.App.Application.Contracts.Repositories;
-using MyPro.App.Domain.Contracts;
+using MyPro.App.Core.Contracts.DbContexts;
+using MyPro.App.Core.Contracts.Entities;
+using MyPro.App.Core.Contracts.Repositories;
 
 namespace MyPro.App.Infrastructure.Repositories
 {
-    internal class GenericRepository<TEntity, TKey> : IGenericRepository<TEntity, TKey>
+    internal class GenericRepository<TDbContext, TEntity, TKey> : IGenericRepository<TEntity, TKey>
+        where TDbContext : IApplicationDbContext
         where TEntity : IEntity<TKey>
         where TKey : struct
     {
+        protected readonly TDbContext dbContext;
+
+        public GenericRepository(TDbContext dbContext)
+        {
+            this.dbContext = dbContext;
+        }
+
         public TEntity Add(TEntity entity)
         {
             throw new NotImplementedException();

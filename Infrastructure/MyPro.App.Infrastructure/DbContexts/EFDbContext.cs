@@ -1,9 +1,9 @@
 ﻿using System;
-using MyPro.App.Application.Contracts.DbContexts;
+using MyPro.App.Core.Contracts.DbContexts;
 
 namespace MyPro.App.Infrastructure.DbContexts
 {
-    public class EFDbContext : IApplicationDbContext
+    internal class EFDbContext : IApplicationDbContext
     {
 
     }

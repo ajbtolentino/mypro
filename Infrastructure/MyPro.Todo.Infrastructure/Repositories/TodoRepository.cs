@@ -1,19 +1,21 @@
 ﻿using System;
-using MyPro.App.Application.Contracts.DbContexts;
+using MyPro.App.Core.Contracts.DbContexts;
 using MyPro.App.Infrastructure.Repositories;
+using MyPro.Todo.Infrastructure.Contracts.DbContexts;
 using MyPro.Todo.Infrastructure.Contracts.Repositories;
 
 namespace MyPro.Todo.Infrastructure.Repositories
 {
-    internal class TodoRepository : GenericRepository<Entities.Todo, int>, ITodoRepository
+    internal class TodoRepository : GenericRepository<ITodoDbContext, Entities.Todo, int>, ITodoRepository
     {
-        public TodoRepository(IApplicationDbContext dbContext)
+        public TodoRepository(ITodoDbContext dbContext)
+            : base(dbContext)
         {
         }
 
         public IEnumerable<Entities.Todo> GetAllActive()
         {
-            throw new NotImplementedException();
+            return null;
         }
     }
 }

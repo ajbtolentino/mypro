@@ -7,26 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Interceptors\" />
     <None Remove="Data\" />
     <None Remove="Data\IMS\" />
     <None Remove="Data\Todo\" />
     <None Remove="Repositories\" />
-    <None Remove="Services\" />
     <None Remove="DbContexts\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Interceptors\" />
     <Folder Include="Repositories\" />
-    <Folder Include="Services\" />
     <Folder Include="DbContexts\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Core\MyPro.App.Application\MyPro.App.Application.csproj" />
-    <ProjectReference Include="..\..\Core\MyPro.App.Domain\MyPro.App.Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
       <InternalsVisibleTo Include="MyPro.Todo.Infrastructure" />
       <InternalsVisibleTo Include="MyPro.IMS.Infrastructure" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\MyPro.App.Core\MyPro.App.Core.csproj" />
   </ItemGroup>
 </Project>
