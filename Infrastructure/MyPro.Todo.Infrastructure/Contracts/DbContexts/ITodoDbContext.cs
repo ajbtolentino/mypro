@@ -1,5 +1,5 @@
 ﻿using System;
-using MyPro.App.Core.Contracts.DbContexts;
+using MyPro.App.Core.DbContexts;
 
 namespace MyPro.Todo.Infrastructure.Contracts.DbContexts
 {

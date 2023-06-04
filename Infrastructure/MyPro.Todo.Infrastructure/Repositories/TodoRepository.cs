@@ -1,5 +1,5 @@
 ﻿using System;
-using MyPro.App.Core.Contracts.DbContexts;
+using MyPro.App.Core.DbContexts;
 using MyPro.App.Infrastructure.Repositories;
 using MyPro.Todo.Infrastructure.Contracts.DbContexts;
 using MyPro.Todo.Infrastructure.Contracts.Repositories;

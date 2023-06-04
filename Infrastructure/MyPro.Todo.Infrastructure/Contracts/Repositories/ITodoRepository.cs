@@ -1,5 +1,5 @@
 ﻿using System;
-using MyPro.App.Core.Contracts.Repositories;
+using MyPro.App.Core.Repositories;
 
 namespace MyPro.Todo.Infrastructure.Contracts.Repositories
 {

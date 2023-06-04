@@ -7,20 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Contracts\" />
-    <None Remove="Contracts\DbContexts\" />
-    <None Remove="Contracts\Repositories\" />
-    <None Remove="Contracts\Entities\" />
-    <None Remove="Contracts\Services\" />
     <None Remove="Entities\" />
+    <None Remove="DbContexts\" />
+    <None Remove="Repositories\" />
+    <None Remove="Services\" />
+    <None Remove="Authentication\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Contracts\" />
-    <Folder Include="Contracts\DbContexts\" />
-    <Folder Include="Contracts\Repositories\" />
-    <Folder Include="Contracts\Entities\" />
-    <Folder Include="Contracts\Services\" />
     <Folder Include="Entities\" />
+    <Folder Include="DbContexts\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="Services\" />
+    <Folder Include="Authentication\" />
   </ItemGroup>
   <ItemGroup>
       <InternalsVisibleTo Include="MyPro.App.Infrastructure" />

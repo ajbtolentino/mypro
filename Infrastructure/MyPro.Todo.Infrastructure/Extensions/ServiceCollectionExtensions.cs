@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using MyPro.App.Core.Contracts.DbContexts;
+using MyPro.App.Core.DbContexts;
 using MyPro.App.Infrastructure.DbContexts;
 using MyPro.Todo.Infrastructure.Contracts.DbContexts;
 using MyPro.Todo.Infrastructure.Contracts.Repositories;
@@ -13,15 +13,17 @@ using MyPro.Todo.Infrastructure.Services;
 
 namespace MyPro.Todo.Infrastructure.Extensions
 {
-    public static class ConfigureServicesExtensions
+    public static class ServiceCollectionExtensions
     {
-        public static void AddTodoInfrastructure(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddTodoInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<TodoEFDbContext>(options => options.UseInMemoryDatabase("CleanArchitectureDb"));
             services.AddScoped<ITodoDbContext>(provider => provider.GetRequiredService<DbContexts.TodoEFDbContext>());
 
             services.AddScoped<ITodoRepository, TodoRepository>();
             services.AddScoped<ITodoService, TodoService>();
+
+            return services;
         }
     }
 }

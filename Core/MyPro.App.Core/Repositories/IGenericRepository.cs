@@ -1,7 +1,7 @@
 ﻿using System;
-using MyPro.App.Core.Contracts.Entities;
+using MyPro.App.Core.Entities;
 
-namespace MyPro.App.Core.Contracts.Repositories
+namespace MyPro.App.Core.Repositories
 {
     internal interface IGenericRepository<TEntity, TKey>
         where TEntity : IEntity<TKey>

@@ -1,5 +1,5 @@
 ﻿using System;
-namespace MyPro.App.Core.Contracts.DbContexts
+namespace MyPro.App.Core.DbContexts
 {
     internal interface IApplicationDbContext
     {

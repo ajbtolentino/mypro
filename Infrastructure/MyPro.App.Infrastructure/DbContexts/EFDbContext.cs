@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
-using MyPro.App.Core.Contracts.DbContexts;
+using MyPro.App.Core.DbContexts;
 
 namespace MyPro.App.Infrastructure.DbContexts
 {

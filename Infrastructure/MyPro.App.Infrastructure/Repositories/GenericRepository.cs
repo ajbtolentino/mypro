@@ -1,7 +1,7 @@
 ﻿using System;
-using MyPro.App.Core.Contracts.DbContexts;
-using MyPro.App.Core.Contracts.Entities;
-using MyPro.App.Core.Contracts.Repositories;
+using MyPro.App.Core.DbContexts;
+using MyPro.App.Core.Entities;
+using MyPro.App.Core.Repositories;
 
 namespace MyPro.App.Infrastructure.Repositories
 {

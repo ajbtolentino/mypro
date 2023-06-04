@@ -1,14 +1,11 @@
 ﻿using System;
-using MyPro.App.Core.Contracts.Services;
+using MyPro.App.Core.Services;
 
 namespace MyPro.App.Infrastructure.Services
 {
     public class DateTimeProvider : IDateTimeProvider
     {
-        public DateTime GetDateTime()
-        {
-            return DateTime.UtcNow;
-        }
+        public DateTime UtcNow => DateTime.UtcNow;
     }
 }
 

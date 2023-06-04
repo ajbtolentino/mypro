@@ -2,7 +2,7 @@
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using MyPro.App.Core.Contracts.DbContexts;
+using MyPro.App.Core.DbContexts;
 using MyPro.App.Infrastructure.DbContexts;
 using MyPro.Todo.Infrastructure.Contracts.DbContexts;
 
