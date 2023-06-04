@@ -12,10 +12,12 @@
     <None Remove="Data\Todo\" />
     <None Remove="Repositories\" />
     <None Remove="DbContexts\" />
+    <None Remove="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Repositories\" />
     <Folder Include="DbContexts\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
       <InternalsVisibleTo Include="MyPro.Todo.Infrastructure" />

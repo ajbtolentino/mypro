@@ -1,7 +1,7 @@
 ﻿using System;
 using MyPro.App.Core.Contracts.Entities;
 
-namespace MyPro.App.Domain.Entities
+namespace MyPro.App.Core.Entities
 {
     public class BaseEntity : IEntity<int>
     {

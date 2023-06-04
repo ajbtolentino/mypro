@@ -10,7 +10,7 @@ using MyPro.Todo.Infrastructure.Contracts.Services;
 namespace MyPro.App.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class TodoController : ControllerBase
     {
         private ITodoService todoService;
