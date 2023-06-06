@@ -3,7 +3,7 @@ namespace MyPro.Todo.Infrastructure.Contracts.Services
 {
     public interface ITodoService
     {
-        void Add(string text);
+        Task AddAsync(string text);
 
         int Count();
     }

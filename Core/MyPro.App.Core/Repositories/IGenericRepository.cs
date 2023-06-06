@@ -3,13 +3,13 @@ using MyPro.App.Core.Entities;
 
 namespace MyPro.App.Core.Repositories
 {
-    internal interface IGenericRepository<TEntity, TKey>
-        where TEntity : IEntity<TKey>
+    internal interface IGenericRepository<TKey, TEntity>
         where TKey : struct
+        where TEntity : IEntity<TKey>
     {
-        TEntity Add(TEntity entity);
+        Task<TEntity> AddAsync(TEntity entity);
         void Delete(TKey id);
-        TEntity Get(TKey id);
+        TEntity GetById(TKey id);
         IQueryable<TEntity> GetAll();
         TEntity Update(TEntity entity);
     }

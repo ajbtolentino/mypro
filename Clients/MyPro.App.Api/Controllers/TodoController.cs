@@ -21,9 +21,9 @@ namespace MyPro.App.Api.Controllers
         }
 
         [HttpGet(nameof(TodoController.Add))]
-        public IActionResult Add(string text)
+        public async Task<IActionResult> Add(string text)
         {
-            this.todoService.Add(text);
+            await this.todoService.AddAsync(text);
 
             return new JsonResult(todoService.Count());
         }

@@ -3,27 +3,27 @@ using MyPro.App.Core.DbContexts;
 using MyPro.Todo.Infrastructure.Contracts.DbContexts;
 using MyPro.Todo.Infrastructure.Contracts.Repositories;
 using MyPro.Todo.Infrastructure.Contracts.Services;
+using MyPro.Todo.Infrastructure.DbContexts;
 
 namespace MyPro.Todo.Infrastructure.Services
 {
     internal class TodoService : ITodoService
     {
-        private IApplicationDbContext dbContext;
+        private ITodoRepository todoRepository;
 
-        public TodoService(IApplicationDbContext dbContext)
+        public TodoService(ITodoRepository todoRepository)
         {
-            this.dbContext = dbContext;
+            this.todoRepository = todoRepository;
         }
 
-        public void Add(string text)
+        public async Task AddAsync(string text)
         {
-            this.dbContext.Add<Entities.Todo>(new Entities.Todo());
-            this.dbContext.SaveChanges();
+            await this.todoRepository.AddAsync(new Entities.Todo());
         }
 
         public int Count()
         {
-            return this.dbContext.GetAll<Entities.Todo>().Count();
+            return this.todoRepository.GetAll().Count();
         }
     }
 }

@@ -1,49 +1,52 @@
 ﻿using System;
-using MyPro.App.Core.DbContexts;
+using Microsoft.EntityFrameworkCore;
 using MyPro.App.Core.Entities;
 using MyPro.App.Core.Repositories;
 
 namespace MyPro.App.Infrastructure.Repositories
 {
-    internal class GenericRepository<TDbContext, TEntity, TKey> : IGenericRepository<TEntity, TKey>
-        where TDbContext : IApplicationDbContext
-        where TEntity : class, IEntity<TKey>
+    internal class GenericRepository<TEntity, TKey> : IGenericRepository<TKey, TEntity>
         where TKey : struct
+        where TEntity : class, IEntity<TKey>
     {
-        protected readonly TDbContext dbContext;
+        protected readonly DbContext dbContext;
 
-        public GenericRepository(TDbContext dbContext)
+        public GenericRepository(DbContext dbContext)
         {
             this.dbContext = dbContext;
         }
 
-        public TEntity Add(TEntity entity)
+        public async Task<TEntity> AddAsync(TEntity entity)
         {
-            var result = this.dbContext.Add(entity);
+            var result = await this.dbContext.AddAsync(entity);
 
             this.dbContext.SaveChanges();
 
-            return result;
+            return result.Entity;
         }
 
         public void Delete(TKey id)
         {
-            this.dbContext.Delete<TEntity, TKey>(id);
+            var entity = this.dbContext.Set<TEntity>().Find(id);
+
+            this.dbContext.Remove<TEntity>(entity);
+
+            this.dbContext.SaveChanges();
         }
 
-        public TEntity Get(TKey id)
+        public TEntity GetById(TKey id)
         {
-            throw new NotImplementedException();
+            return this.dbContext.Set<TEntity>().Find(id);
         }
 
         public IQueryable<TEntity> GetAll()
         {
-            return this.dbContext.GetAll<TEntity>();
+            return this.dbContext.Set<TEntity>();
         }
 
         public TEntity Update(TEntity entity)
         {
-            return this.dbContext.Update(entity);
+            return this.dbContext.Set<TEntity>().Update(entity).Entity;
         }
     }
 }

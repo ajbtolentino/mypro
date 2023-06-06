@@ -2,20 +2,19 @@
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using MyPro.App.Core.DbContexts;
 using MyPro.App.Infrastructure.DbContexts;
 using MyPro.Todo.Infrastructure.Contracts.DbContexts;
 
 namespace MyPro.Todo.Infrastructure.DbContexts
 {
-    internal class TodoEFDbContext : EFDbContext, ITodoDbContext
+    internal class TodoDbContext : DbContext, ITodoDbContext
     {
-        public TodoEFDbContext(DbContextOptions<TodoEFDbContext> options)
+        public TodoDbContext(DbContextOptions<TodoDbContext> options)
             : base(options)
         {
         }
 
-        DbSet<Entities.Todo> Todos { get; set; }
+        public DbSet<Entities.Todo> Todos => base.Set<Entities.Todo>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -1,14 +1,13 @@
 ﻿using System;
-using MyPro.App.Core.DbContexts;
 using MyPro.App.Infrastructure.Repositories;
-using MyPro.Todo.Infrastructure.Contracts.DbContexts;
 using MyPro.Todo.Infrastructure.Contracts.Repositories;
+using MyPro.Todo.Infrastructure.DbContexts;
 
 namespace MyPro.Todo.Infrastructure.Repositories
 {
-    internal class TodoRepository : GenericRepository<ITodoDbContext, Entities.Todo, int>, ITodoRepository
+    internal class TodoRepository : GenericRepository<Entities.Todo, int>, ITodoRepository
     {
-        public TodoRepository(ITodoDbContext dbContext)
+        public TodoRepository(TodoDbContext dbContext)
             : base(dbContext)
         {
         }
