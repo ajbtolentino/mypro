@@ -1,4 +1,4 @@
-﻿namespace MyPro.App.Api;
+﻿namespace MyPro.Shopping.Api;
 
 public class WeatherForecast
 {

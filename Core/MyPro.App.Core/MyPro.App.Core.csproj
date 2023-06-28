@@ -22,7 +22,8 @@
   </ItemGroup>
   <ItemGroup>
       <InternalsVisibleTo Include="MyPro.App.Infrastructure" />
-      <InternalsVisibleTo Include="MyPro.IMS.Infrastructure" />
       <InternalsVisibleTo Include="MyPro.Todo.Infrastructure" />
+      <InternalsVisibleTo Include="MyPro.Identity.Api" />
+      <InternalsVisibleTo Include="MyPro.Shopping.Api" />
   </ItemGroup>
 </Project>

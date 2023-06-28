@@ -1,5 +1,4 @@
-﻿using System;
-using System.IdentityModel.Tokens.Jwt;
+﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
@@ -11,7 +10,7 @@ namespace MyPro.App.Infrastructure.Authentication;
 public class JwtTokenGenerator : IJwtTokenGenerator
 {
     //TODO: Config file
-    private string key = "super-secret-key";
+    private string key = "super-secret-secret-secret-key-123456789";
     private string issuer = "MyPro";
 
     private readonly IDateTimeProvider dateTimeProvider;
