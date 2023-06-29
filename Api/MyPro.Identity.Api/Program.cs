@@ -1,34 +1,51 @@
-﻿using MyPro.Identity.Api.Infrastructure.Extensions;
+﻿using IdentityServer;
+using IdentityServer4;
+using IdentityServerHost.Quickstart.UI;
+using Microsoft.IdentityModel.Tokens;
+using MyPro.Identity.Api.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddMvc();
+builder.Services.AddIdentityServer()
+                .AddInMemoryIdentityResources(Config.IdentityResources)
+                .AddInMemoryApiScopes(Config.ApiScopes)
+                .AddInMemoryClients(Config.Clients)
+                .AddTestUsers(TestUsers.Users)
+                .AddDeveloperSigningCredential();
 
-//builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-//builder.Services.AddEndpointsApiExplorer();
-//builder.Services.AddSwaggerGen();
-builder.Services.AddIdentityInfrastructure(builder.Configuration);
+builder.Services.AddControllersWithViews();
+
+builder.Services.AddAuthentication()
+    .AddOpenIdConnect("oidc", "Demo IdentityServer", options =>
+    {
+        options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+        options.SignOutScheme = IdentityServerConstants.SignoutScheme;
+        options.SaveTokens = true;
+
+        options.Authority = "https://demo.identityserver.io/";
+        options.ClientId = "interactive.confidential";
+        options.ClientSecret = "secret";
+        options.ResponseType = "code";
+
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            NameClaimType = "name",
+            RoleClaimType = "role"
+        };
+    });
 
 var app = builder.Build();
 
-//app.UsePathBase(new PathString("/api/"));
-
-// Configure the HTTP request pipeline.
-//if (app.Environment.IsDevelopment())
-//{
-    //app.UseSwagger();
-    //app.UseSwaggerUI();
-//}
-
-//app.UseHttpsRedirection();
-
-//app.UseAuthorization();
-
-//app.MapControllers();
-
+app.UseStaticFiles();
 app.UseRouting();
+
 app.UseIdentityServer();
+app.UseAuthorization();
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapDefaultControllerRoute();
+});
 
 app.Run();
 
