@@ -47,7 +47,7 @@ namespace IdentityServer
                     AllowedGrantTypes = GrantTypes.Code,
                     
                     // where to redirect to after login
-                    RedirectUris = { "https://localhost:5002/signin-oidc" },
+                    RedirectUris = { "www.google.com" },
 
                     // where to redirect to after logout
                     PostLogoutRedirectUris = { "https://localhost:5002/signout-callback-oidc" },
@@ -55,8 +55,23 @@ namespace IdentityServer
                     AllowedScopes = new List<string>
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
-                        IdentityServerConstants.StandardScopes.Profile
+                        IdentityServerConstants.StandardScopes.Profile,
+                        "api1"
                     }
+                },
+                new Client
+                {
+                    ClientId = "demo_api_swagger",
+                    ClientName = "Swagger UI for demo_api",
+                    ClientSecrets = {new Secret("secret".Sha256())}, // change me!
+
+                    AllowedGrantTypes = GrantTypes.Code,
+                    RequirePkce = true,
+                    RequireClientSecret = false,
+
+                    RedirectUris = {"https://localhost:5000/swagger/oauth2-redirect.html"},
+                    AllowedCorsOrigins = {"https://localhost:5000"},
+                    AllowedScopes = {"api1"}
                 }
             };
     }
