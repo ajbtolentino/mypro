@@ -27,31 +27,21 @@ namespace IdentityServer
         public static IEnumerable<Client> Clients =>
             new List<Client>
             {
-                // machine to machine client
                 new Client
                 {
                     ClientId = "client",
                     ClientSecrets = { new Secret("secret".Sha256()) },
-
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
-                    // scopes that client has access to
                     AllowedScopes = { "api1" }
                 },
-                
-                // interactive ASP.NET Core MVC client
                 new Client
                 {
                     ClientId = "mvc",
                     ClientSecrets = { new Secret("secret".Sha256()) },
-
                     AllowedGrantTypes = GrantTypes.Code,
-                    
-                    // where to redirect to after login
-                    RedirectUris = { "www.google.com" },
-
-                    // where to redirect to after logout
+                    RequirePkce = true,
+                    RedirectUris = {"https://localhost:5000/swagger/oauth2-redirect.html"},
                     PostLogoutRedirectUris = { "https://localhost:5002/signout-callback-oidc" },
-
                     AllowedScopes = new List<string>
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
@@ -61,14 +51,12 @@ namespace IdentityServer
                 },
                 new Client
                 {
-                    ClientId = "demo_api_swagger",
-                    ClientName = "Swagger UI for demo_api",
+                    ClientId = "gateway_api_swagger",
+                    ClientName = "Swagger UI for gateway_api",
                     ClientSecrets = {new Secret("secret".Sha256())}, // change me!
-
                     AllowedGrantTypes = GrantTypes.Code,
                     RequirePkce = true,
                     RequireClientSecret = false,
-
                     RedirectUris = {"https://localhost:5000/swagger/oauth2-redirect.html"},
                     AllowedCorsOrigins = {"https://localhost:5000"},
                     AllowedScopes = {"api1"}

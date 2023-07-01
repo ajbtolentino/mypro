@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using MyPro.Gateway.Api;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +14,7 @@ builder.Services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
                 {
                     options.Authority = "https://localhost:5001";
-
+                    options.SaveToken = true;
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateAudience = false
@@ -34,21 +35,25 @@ builder.Services.AddAuthorization(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
-    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Protected API", Version = "v1" });
+    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Gateway API", Version = "v1" });
     options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
     {
-        Type = SecuritySchemeType.OAuth2,
-        Flows = new OpenApiOAuthFlows
+        Type = SecuritySchemeType.OpenIdConnect,
+        In = ParameterLocation.Header,
+        OpenIdConnectUrl = new Uri("https://localhost:5001/.well-known/openid-configuration")
+    });
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
         {
-            AuthorizationCode = new OpenApiOAuthFlow
+            new OpenApiSecurityScheme
             {
-                AuthorizationUrl = new Uri("https://localhost:5001/connect/authorize"),
-                TokenUrl = new Uri("https://localhost:5001/connect/token"),
-                Scopes = new Dictionary<string, string>
+                Reference = new OpenApiReference
                 {
-                    {"api1", "Demo API - full access"}
+                    Type=ReferenceType.SecurityScheme,
+                    Id="oauth2"
                 }
-            }
+            },
+            new string[]{}
         }
     });
 });
@@ -62,8 +67,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(options =>
     {
         options.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-        options.OAuthClientId("demo_api_swagger");
-        options.OAuthAppName("Demo API - Swagger");
+        options.OAuthClientId("gateway_api_swagger");
+        options.OAuthAppName("Gateway API - Swagger");
         options.OAuthUsePkce();
     });
 }
