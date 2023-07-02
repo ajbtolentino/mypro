@@ -17,50 +17,91 @@ namespace IdentityServer
                 new IdentityResources.Profile(),
             };
 
+        public static List<ApiResource> ApiResources = new List<ApiResource>
+        {
+            new ApiResource
+            {
+                Name = "identity-server-demo-api",
+                DisplayName = "Identity Server Demo API",
+                Scopes = new List<string>
+                {
+                    "write",
+                    "read"
+                }
+            }
+        };
 
         public static IEnumerable<ApiScope> ApiScopes =>
             new List<ApiScope>
             {
-                new ApiScope("api1", "My API")
+                new ApiScope("openid"),
+                new ApiScope("profile"),
+                new ApiScope("email"),
+                new ApiScope("read"),
+                new ApiScope("write"),
+                new ApiScope("api1"),
+                new ApiScope("identity-server-demo-api")
             };
 
         public static IEnumerable<Client> Clients =>
             new List<Client>
             {
+                //new Client
+                //{
+                //    ClientId = "client",
+                //    ClientSecrets = { new Secret("secret".Sha256()) },
+                //    AllowedGrantTypes = GrantTypes.ClientCredentials,
+                //    AllowedCorsOrigins = {"https://localhost:5000"},
+                //    AllowedScopes = { "api1" }
+                //},
                 new Client
                 {
-                    ClientId = "client",
-                    ClientSecrets = { new Secret("secret".Sha256()) },
-                    AllowedGrantTypes = GrantTypes.ClientCredentials,
-                    AllowedScopes = { "api1" }
-                },
-                new Client
-                {
-                    ClientId = "mvc",
-                    ClientSecrets = { new Secret("secret".Sha256()) },
-                    AllowedGrantTypes = GrantTypes.Code,
-                    RequirePkce = true,
-                    RedirectUris = {"https://localhost:5000/swagger/oauth2-redirect.html"},
-                    PostLogoutRedirectUris = { "https://localhost:5002/signout-callback-oidc" },
-                    AllowedScopes = new List<string>
-                    {
-                        IdentityServerConstants.StandardScopes.OpenId,
-                        IdentityServerConstants.StandardScopes.Profile,
-                        "api1"
-                    }
-                },
-                new Client
-                {
-                    ClientId = "gateway_api_swagger",
-                    ClientName = "Swagger UI for gateway_api",
-                    ClientSecrets = {new Secret("secret".Sha256())}, // change me!
-                    AllowedGrantTypes = GrantTypes.Code,
-                    RequirePkce = true,
+                    ClientId = "identity-server-demo-web",
+                    AllowedGrantTypes = new List<string> { GrantType.AuthorizationCode },
                     RequireClientSecret = false,
-                    RedirectUris = {"https://localhost:5000/swagger/oauth2-redirect.html"},
+                    RequireConsent = false,
+                    RedirectUris = new List<string> { "http://localhost:5000/signin-callback.html" },
+                    PostLogoutRedirectUris = new List<string> { "http://localhost:5000/" },
+                    AllowedScopes = { "identity-server-demo-api", "write", "read", "openid", "profile", "email" },
                     AllowedCorsOrigins = {"https://localhost:5000"},
-                    AllowedScopes = {"api1"}
+                    AccessTokenLifetime = 86400
                 }
+                //new Client
+                //{
+                //    ClientId = "gateway-client",
+                //    ClientSecrets = { new Secret("secret".Sha256()) },
+                //    AllowedGrantTypes = GrantTypes.ResourceOwnerPasswordAndClientCredentials,
+                //    AllowedCorsOrigins = {"https://localhost:5000"},
+                //    AllowedScopes = { "api1" }
+                //},
+                //new Client
+                //{
+                //    ClientId = "mvc",
+                //    ClientSecrets = { new Secret("secret".Sha256()) },
+                //    AllowedGrantTypes = GrantTypes.Code,
+                //    RequirePkce = true,
+                //    RedirectUris = {"https://localhost:5000/swagger/oauth2-redirect.html"},
+                //    PostLogoutRedirectUris = { "https://localhost:5002/signout-callback-oidc" },
+                //    AllowedCorsOrigins = {"https://localhost:5000"},
+                //    AllowedScopes = new List<string>
+                //    {
+                //        IdentityServerConstants.StandardScopes.OpenId,
+                //        IdentityServerConstants.StandardScopes.Profile,
+                //        "api1"
+                //    }
+                //},
+                //new Client
+                //{
+                //    ClientId = "gateway_api_swagger",
+                //    ClientName = "Swagger UI for gateway_api",
+                //    ClientSecrets = {new Secret("secret".Sha256())}, // change me!
+                //    AllowedGrantTypes = GrantTypes.Code,
+                //    RequirePkce = true,
+                //    RequireClientSecret = false,
+                //    RedirectUris = {"https://localhost:5000/swagger/oauth2-redirect.html"},
+                //    AllowedCorsOrigins = {"https://localhost:5000"},
+                //    AllowedScopes = {"api1"}
+                //}
             };
     }
 }

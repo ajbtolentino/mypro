@@ -36,11 +36,14 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo { Title = "Gateway API", Version = "v1" });
-    options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
+        Name="Authorization",
         Type = SecuritySchemeType.OpenIdConnect,
+        Scheme = "Bearer",
         In = ParameterLocation.Header,
-        OpenIdConnectUrl = new Uri("https://localhost:5001/.well-known/openid-configuration")
+        OpenIdConnectUrl = new Uri("https://localhost:5001/.well-known/openid-configuration"),
+        
     });
     options.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
@@ -50,8 +53,12 @@ builder.Services.AddSwaggerGen(options =>
                 Reference = new OpenApiReference
                 {
                     Type=ReferenceType.SecurityScheme,
-                    Id="oauth2"
-                }
+                    Id="Bearer"
+                },
+                Scheme = "oauth2",
+                Name = "Bearer",
+                In = ParameterLocation.Header,
+
             },
             new string[]{}
         }
@@ -63,14 +70,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(options =>
-    {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-        options.OAuthClientId("gateway_api_swagger");
-        options.OAuthAppName("Gateway API - Swagger");
-        options.OAuthUsePkce();
-    });
+    app.UseDeveloperExceptionPage();
 }
 
 app.UseHttpsRedirection();
@@ -78,6 +78,13 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseSwagger();
+
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Gateway API");
+});
 
 app.Run();
 
