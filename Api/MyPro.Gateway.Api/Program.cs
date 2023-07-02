@@ -13,7 +13,7 @@ JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 builder.Services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
                 {
-                    options.Authority = builder.Configuration.GetValue<string>("IdentityServerUrl");
+                    options.Authority = builder.Configuration.GetValue<string>("AuthUrl");
                     options.SaveToken = true;
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
@@ -33,8 +33,8 @@ builder.Services.AddSwaggerGen(options =>
         {
             AuthorizationCode = new OpenApiOAuthFlow
             {
-                AuthorizationUrl = new Uri($"{builder.Configuration.GetValue<string>("IdentityServerUrl")}/connect/authorize"),
-                TokenUrl = new Uri($"{builder.Configuration.GetValue<string>("IdentityServerUrl")}/connect/token")
+                AuthorizationUrl = new Uri($"{builder.Configuration.GetValue<string>("AuthUrl")}/connect/authorize"),
+                TokenUrl = new Uri($"{builder.Configuration.GetValue<string>("AuthUrl")}/connect/token")
             }
         },
         Type = SecuritySchemeType.OAuth2
@@ -65,6 +65,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
