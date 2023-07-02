@@ -10,7 +10,7 @@ using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString = builder.Configuration.GetConnectionString("IdentityServerDatabase");
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnectionString");
 var migrationAssembly = "MyPro.Identity.Api";
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -69,7 +69,7 @@ using (var scope = app.Services.CreateScope())
     dbContext.Database.Migrate();
 }
 
-DatabaseInitializer.PopulateIdentityServer(app);
+Task.WaitAll(DatabaseInitializer.PopulateIdentityServer(app));
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

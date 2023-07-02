@@ -36,8 +36,8 @@ builder.Services.AddSwaggerGen(options =>
         {
             ClientCredentials = new OpenApiOAuthFlow
             {
-                AuthorizationUrl = new Uri("https://localhost:5001/connect/authorize"),
-                TokenUrl = new Uri("https://localhost:5001/connect/token")
+                AuthorizationUrl = new Uri($"{builder.Configuration.GetValue<string>("IdentityServerUrl")}/connect/authorize"),
+                TokenUrl = new Uri($"{builder.Configuration.GetValue<string>("IdentityServerUrl")}/connect/token")
             }
         },
     }); ;

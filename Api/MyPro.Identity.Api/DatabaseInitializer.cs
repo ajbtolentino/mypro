@@ -3,15 +3,23 @@ using System.Linq;
 using IdentityServer4.EntityFramework.DbContexts;
 using IdentityServer4.EntityFramework.Mappers;
 using Microsoft.EntityFrameworkCore;
+using IdentityServerHost.Quickstart.UI;
+using Microsoft.AspNetCore.Identity;
+using MyPro.Identity.Api.Models;
 
 namespace MyPro.Identity.Api
 {
 
     public static class DatabaseInitializer
     {
-        public static void PopulateIdentityServer(IApplicationBuilder app)
+        public static async Task PopulateIdentityServer(IApplicationBuilder app)
         {
-            using var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope();
+            var serviceScopeFactory = app.ApplicationServices.GetService<IServiceScopeFactory>();
+
+            if (serviceScopeFactory == null)
+                throw new NullReferenceException(nameof(app));
+
+            using var serviceScope = serviceScopeFactory.CreateScope();
             serviceScope.ServiceProvider.GetRequiredService<PersistedGrantDbContext>().Database.Migrate();
 
             var context = serviceScope.ServiceProvider.GetRequiredService<ConfigurationDbContext>();
@@ -45,6 +53,28 @@ namespace MyPro.Identity.Api
                 if (item == null)
                 {
                     context.ApiScopes.Add(scope.ToEntity());
+                }
+            }
+
+            var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+
+            foreach (var user in TestUsers.Users)
+            {
+                var item = userManager.Users.FirstOrDefault(_ => _.UserName == user.Username);
+
+                if(item == null)
+                {
+                    var newUser = new ApplicationUser
+                    {
+                        UserName = user.Username,
+                        Email = user.Username,
+                        EmailConfirmed = true
+                    };
+
+                    var result = await userManager.CreateAsync(newUser, user.Password);
+                    var u = userManager.Users.FirstOrDefault(_ => _.UserName == user.Username);
+
+                    await userManager.AddClaimsAsync(u, user.Claims);
                 }
             }
 

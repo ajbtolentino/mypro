@@ -1,5 +1,4 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
@@ -14,7 +13,7 @@ JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 builder.Services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
                 {
-                    options.Authority = "https://localhost:5001";
+                    options.Authority = builder.Configuration.GetValue<string>("IdentityServerUrl");
                     options.SaveToken = true;
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
@@ -34,8 +33,8 @@ builder.Services.AddSwaggerGen(options =>
         {
             AuthorizationCode = new OpenApiOAuthFlow
             {
-                AuthorizationUrl = new Uri("https://localhost:5001/connect/authorize"),
-                TokenUrl = new Uri("https://localhost:5001/connect/token")
+                AuthorizationUrl = new Uri($"{builder.Configuration.GetValue<string>("IdentityServerUrl")}/connect/authorize"),
+                TokenUrl = new Uri($"{builder.Configuration.GetValue<string>("IdentityServerUrl")}/connect/token")
             }
         },
         Type = SecuritySchemeType.OAuth2
@@ -77,10 +76,8 @@ app.UseSwaggerUI(options =>
     options.OAuthClientId("web");
     options.OAuthClientSecret("secret");
     options.OAuthUsePkce();
-    options.OAuth2RedirectUrl("https://localhost:5000/swagger/oauth2-redirect.html");
+    options.OAuth2RedirectUrl("https://localhost:6001/swagger/oauth2-redirect.html");
     options.OAuthScopes("web");
-    //options.EnablePersistAuthorization();
-    //options.OAuthUseBasicAuthenticationWithAccessCodeGrant();
 });
 
 app.Run();
