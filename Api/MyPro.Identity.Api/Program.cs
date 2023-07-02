@@ -71,6 +71,7 @@ using (var scope = app.Services.CreateScope())
 
 DatabaseInitializer.PopulateIdentityServer(app);
 
+app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseIdentityServer();
@@ -80,6 +81,8 @@ app.UseEndpoints(endpoints =>
 {
     endpoints.MapDefaultControllerRoute();
 });
+
+app.UseIdentityServer();
 
 app.Run();
 
