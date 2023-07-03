@@ -8,14 +8,16 @@ using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 namespace MyPro.Shopping.Api.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 [Authorize]
-public class IntegrationController : ControllerBase
+public class IntegrationController : BaseApiController
 {
     private readonly IConfiguration _configuration;
     private readonly ILogger<IntegrationController> _logger;
 
-    public IntegrationController(ILogger<IntegrationController> logger, IConfiguration configuration)
+    public IntegrationController(ILogger<IntegrationController> logger,
+        IConfiguration configuration)
+        :base(logger)
     {
         _configuration = configuration;
         _logger = logger;

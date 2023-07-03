@@ -13,8 +13,7 @@ JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 builder.Services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
                 {
-                    options.Authority = "https://localhost:5001";
-                    options.SaveToken = true;
+                    options.Authority = builder.Configuration.GetValue<string>("AuthUrl");
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateAudience = false

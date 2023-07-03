@@ -4,9 +4,9 @@
     },
     "Routes": [
         {
-            "UpstreamPathTemplate": "/gateway/integration/testconnection",
+            "UpstreamPathTemplate": "/gateway/{everything}",
             "UpstreamHttpMethod": [ "Get" ],
-            "DownstreamPathTemplate": "/integration/testconnection",
+            "DownstreamPathTemplate": "/api/{everything}",
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {

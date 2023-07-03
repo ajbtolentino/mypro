@@ -1,12 +1,10 @@
 ﻿using IdentityServer4;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.IdentityModel.Tokens;
-using MyPro.Identity.Api.DbContext;
-//using MyPro.Identity.Api.Infrastructure.Extensions;
-using MyPro.Identity.Api.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using MyPro.Identity.Api;
-using System;
+using MyPro.Identity.Api.DbContext;
+using MyPro.Identity.Api.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,24 +32,7 @@ builder.Services.AddIdentityServer()
 
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddAuthentication()
-                .AddOpenIdConnect(options =>
-                {
-                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
-                    options.SignOutScheme = IdentityServerConstants.SignoutScheme;
-                    options.SaveTokens = true;
-
-                    options.Authority = "https://localhost:5001/";
-                    options.ClientId = "private-api";
-                    options.ClientSecret = "secret";
-                    options.ResponseType = "id_token";
-
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        NameClaimType = "name",
-                        RoleClaimType = "role"
-                    };
-                });
+builder.Services.AddAuthentication();
 
 var app = builder.Build();
 
@@ -65,7 +46,7 @@ using (var scope = app.Services.CreateScope())
     dbContext.Database.Migrate();
 }
 
-Task.WaitAll(DatabaseInitializer.PopulateIdentityServer(app));
+DatabaseInitializer.PopulateIdentityServer(app).Wait();
 
 app.UseHttpsRedirection();
 
