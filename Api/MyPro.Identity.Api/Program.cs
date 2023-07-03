@@ -21,10 +21,6 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddDefaultTokenProviders();
 
 builder.Services.AddIdentityServer()
-                //.AddInMemoryIdentityResources(Config.IdentityResources)
-                //.AddInMemoryApiScopes(Config.ApiScopes)
-                //.AddInMemoryClients(Config.Clients)
-                //.AddTestUsers(TestUsers.Users)
                 .AddDeveloperSigningCredential()
                 .AddAspNetIdentity<ApplicationUser>()
                 .AddConfigurationStore(options =>
@@ -39,23 +35,23 @@ builder.Services.AddIdentityServer()
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddAuthentication()
-    .AddOpenIdConnect("oidc", "Demo IdentityServer", options =>
-    {
-        options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
-        options.SignOutScheme = IdentityServerConstants.SignoutScheme;
-        options.SaveTokens = true;
+                .AddOpenIdConnect(options =>
+                {
+                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+                    options.SignOutScheme = IdentityServerConstants.SignoutScheme;
+                    options.SaveTokens = true;
 
-        options.Authority = "https://demo.identityserver.io/";
-        options.ClientId = "interactive.confidential";
-        options.ClientSecret = "secret";
-        options.ResponseType = "code";
+                    options.Authority = "https://localhost:5001/";
+                    options.ClientId = "private-api";
+                    options.ClientSecret = "secret";
+                    options.ResponseType = "id_token";
 
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            NameClaimType = "name",
-            RoleClaimType = "role"
-        };
-    });
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        NameClaimType = "name",
+                        RoleClaimType = "role"
+                    };
+                });
 
 var app = builder.Build();
 
@@ -72,8 +68,10 @@ using (var scope = app.Services.CreateScope())
 Task.WaitAll(DatabaseInitializer.PopulateIdentityServer(app));
 
 app.UseHttpsRedirection();
+
 app.UseStaticFiles();
 app.UseRouting();
+
 app.UseIdentityServer();
 app.UseAuthorization();
 
@@ -81,8 +79,6 @@ app.UseEndpoints(endpoints =>
 {
     endpoints.MapDefaultControllerRoute();
 });
-
-app.UseIdentityServer();
 
 app.Run();
 

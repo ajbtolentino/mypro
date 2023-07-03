@@ -46,6 +46,16 @@ namespace MyPro.Identity.Api
                 }
             }
 
+            foreach (var resource in Config.IdentityResources)
+            {
+                var item = context.IdentityResources.SingleOrDefault(c => c.Name == resource.Name);
+
+                if (item == null)
+                {
+                    context.IdentityResources.Add(resource.ToEntity());
+                }
+            }
+
             foreach (var scope in Config.ApiScopes)
             {
                 var item = context.ApiScopes.SingleOrDefault(c => c.Name == scope.Name);

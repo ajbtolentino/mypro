@@ -1,6 +1,11 @@
-﻿using IdentityModel.Client;
+﻿using System.Net.Http.Headers;
+using IdentityModel.Client;
+using IdentityServer4.Models;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using Microsoft.Net.Http.Headers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -36,9 +41,9 @@ public class IntegrationController : ControllerBase
         var tokenResponse = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
         {
             Address = disco.TokenEndpoint,
-            ClientId = "api",
+            ClientId = "private-api",
             ClientSecret = "secret",
-            Scope = "api"
+            Scope = "read"
         });
 
         if (tokenResponse.IsError)
@@ -62,7 +67,22 @@ public class IntegrationController : ControllerBase
             var content = await response.Content.ReadAsStringAsync();
             return new JsonResult(content);
         }
+    }
 
+    [HttpGet(nameof(GetUser))]
+    public async Task<IActionResult> GetUser()
+    {
+        var client = new HttpClient();
+        var accessToken = await HttpContext.GetTokenAsync(OpenIdConnectParameterNames.AccessToken);
+        var disco = await client.GetDiscoveryDocumentAsync($"{_configuration.GetValue<string>("AuthUrl")}/.well-known/openid-configuration");
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+        var response = await client.GetUserInfoAsync(new UserInfoRequest
+        {
+            Address = disco.UserInfoEndpoint,
+            Token = accessToken
+        });
+
+        return new JsonResult(response.HttpResponse.Content.ReadAsStringAsync());
     }
 }
 

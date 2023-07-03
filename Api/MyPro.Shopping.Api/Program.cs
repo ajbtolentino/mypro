@@ -82,7 +82,8 @@ app.UseSwagger();
 app.UseSwaggerUI(options =>
 {
     options.SwaggerEndpoint("/swagger/v1/swagger.json", "Shopping API");
-    options.OAuthClientId("api");
+    options.OAuthClientId("shopping-api");
+    options.OAuthScopes("read");
 });
 
 app.Run();
