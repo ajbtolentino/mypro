@@ -1,10 +1,12 @@
 ﻿{
-    "$schema": "https://json.schemastore.org/ocelot.json",
+    "GlobalConfiguration": {
+        "BaseUrl": "https://localhost:6443"
+    },
     "Routes": [
         {
-            "UpstreamPathTemplate": "/api/gateway/monitor/test",
+            "UpstreamPathTemplate": "/gateway/{everything}",
             "UpstreamHttpMethod": [ "Get" ],
-            "DownstreamPathTemplate": "/api/monitor/test",
+            "DownstreamPathTemplate": "/api/{everything}",
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
@@ -13,8 +15,5 @@
                 }
             ]
         }
-    ],
-    "GlobalConfiguration": {
-        "BaseUrl": "https://localhost:6443"
-    }
+    ]
 }

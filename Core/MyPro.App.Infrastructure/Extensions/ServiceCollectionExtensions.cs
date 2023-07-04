@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
@@ -13,7 +12,7 @@ namespace MyPro.App.Infrastructure.Extensions;
 
 public static class ServiceCollectionExtensions
 {
-    public static AuthenticationBuilder AddMicroserviceAuthentication(this IServiceCollection services, IConfiguration configuration, string name)
+    public static AuthenticationBuilder AddMyProAuthentication(this IServiceCollection services, IConfiguration configuration, string name)
     {
         return services.AddAuthentication(name)
                         .AddJwtBearer(name, options =>
