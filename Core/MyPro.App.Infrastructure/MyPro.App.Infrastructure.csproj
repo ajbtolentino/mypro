@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Data\" />
+    <None Remove="Data\IMS\" />
+    <None Remove="Data\Todo\" />
+    <None Remove="Repositories\" />
+    <None Remove="DbContexts\" />
+    <None Remove="Services\" />
+    <None Remove="Extensions\" />
+    <None Remove="Authentication\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Repositories\" />
+    <Folder Include="DbContexts\" />
+    <Folder Include="Services\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Authentication\" />
+  </ItemGroup>
+  <ItemGroup>
+      <InternalsVisibleTo Include="MyPro.Todo.Infrastructure" />
+      <InternalsVisibleTo Include="MyPro.Identity.Api" />
+      <InternalsVisibleTo Include="MyPro.Shopping.Api" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\MyPro.App.Core\MyPro.App.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.8" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.31.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.8" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+</Project>
