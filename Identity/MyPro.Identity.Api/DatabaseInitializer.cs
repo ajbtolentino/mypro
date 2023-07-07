@@ -1,10 +1,8 @@
 ﻿using IdentityServer;
-using System.Linq;
 using IdentityServer4.EntityFramework.DbContexts;
 using IdentityServer4.EntityFramework.Mappers;
-using Microsoft.EntityFrameworkCore;
-using IdentityServerHost.Quickstart.UI;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using MyPro.Identity.Api.Models;
 
 namespace MyPro.Identity.Api
@@ -68,7 +66,7 @@ namespace MyPro.Identity.Api
 
             var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
-            foreach (var user in TestUsers.Users)
+            foreach (var user in Config.Users)
             {
                 var item = userManager.Users.FirstOrDefault(_ => _.UserName == user.Username);
 

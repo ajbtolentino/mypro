@@ -1,7 +1,11 @@
 ﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
+using IdentityModel;
+using System.Security.Claims;
 using IdentityServer4;
 using IdentityServer4.Models;
+using IdentityServer4.Test;
+using System.Text.Json;
 
 namespace IdentityServer
 {
@@ -17,7 +21,21 @@ namespace IdentityServer
 
         public static List<ApiResource> ApiResources = new List<ApiResource>
         {
-            new ApiResource("shopping-api")
+            new ApiResource("catalog-api")
+            {
+                Scopes =
+                {
+                    "read"
+                }
+            },
+            new ApiResource("order-api")
+            {
+                Scopes =
+                {
+                    "read"
+                }
+            },
+            new ApiResource("payment-api")
             {
                 Scopes =
                 {
@@ -28,9 +46,6 @@ namespace IdentityServer
             {
                 Scopes =
                 {
-                    IdentityServerConstants.StandardScopes.OpenId,
-                    IdentityServerConstants.StandardScopes.Profile,
-                    IdentityServerConstants.StandardScopes.Email,
                     "read"
                 }
             }
@@ -39,9 +54,6 @@ namespace IdentityServer
         public static IEnumerable<ApiScope> ApiScopes =>
             new List<ApiScope>
             {
-                //new ApiScope(IdentityServerConstants.StandardScopes.OpenId),
-                //new ApiScope(IdentityServerConstants.StandardScopes.Profile),
-                //new ApiScope(IdentityServerConstants.StandardScopes.Email),
                 new ApiScope("read")
             };
 
@@ -113,5 +125,55 @@ namespace IdentityServer
                     AccessTokenLifetime = 86400
                 }
             };
+
+        public static List<TestUser> Users
+        {
+            get
+            {
+                var address = new
+                {
+                    street_address = "One Hacker Way",
+                    locality = "Heidelberg",
+                    postal_code = 69118,
+                    country = "Germany"
+                };
+
+                return new List<TestUser>
+                {
+                    new TestUser
+                    {
+                        SubjectId = "818727",
+                        Username = "alice@test.com",
+                        Password = "Test.123",
+                        Claims =
+                        {
+                            new Claim(JwtClaimTypes.Name, "Alice Smith"),
+                            new Claim(JwtClaimTypes.GivenName, "Alice"),
+                            new Claim(JwtClaimTypes.FamilyName, "Smith"),
+                            new Claim(JwtClaimTypes.Email, "AliceSmith@email.com"),
+                            new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
+                            new Claim(JwtClaimTypes.WebSite, "http://alice.com"),
+                            new Claim(JwtClaimTypes.Address, JsonSerializer.Serialize(address), IdentityServerConstants.ClaimValueTypes.Json)
+                        }
+                    },
+                    new TestUser
+                    {
+                        SubjectId = "88421113",
+                        Username = "bob@test.com",
+                        Password = "Test.123",
+                        Claims =
+                        {
+                            new Claim(JwtClaimTypes.Name, "Bob Smith"),
+                            new Claim(JwtClaimTypes.GivenName, "Bob"),
+                            new Claim(JwtClaimTypes.FamilyName, "Smith"),
+                            new Claim(JwtClaimTypes.Email, "BobSmith@email.com"),
+                            new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
+                            new Claim(JwtClaimTypes.WebSite, "http://bob.com"),
+                            new Claim(JwtClaimTypes.Address, JsonSerializer.Serialize(address), IdentityServerConstants.ClaimValueTypes.Json)
+                        }
+                    }
+                };
+            }
+        }
     }
 }

@@ -4,7 +4,19 @@
     },
     "Routes": [
         {
-            "UpstreamPathTemplate": "/gateway/{everything}",
+            "UpstreamPathTemplate": "/gateway/catalog/{everything}",
+            "UpstreamHttpMethod": [ "Get" ],
+            "DownstreamPathTemplate": "/api/{everything}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7443
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/gateway/cart/{everything}",
             "UpstreamHttpMethod": [ "Get" ],
             "DownstreamPathTemplate": "/api/{everything}",
             "DownstreamScheme": "https",
@@ -12,6 +24,18 @@
                 {
                     "Host": "localhost",
                     "Port": 8443
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/gateway/payment/{everything}",
+            "UpstreamHttpMethod": [ "Get" ],
+            "DownstreamPathTemplate": "/api/{everything}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 9443
                 }
             ]
         }

@@ -34,6 +34,8 @@
     <None Remove="Controllers\Diagnostics\" />
     <None Remove="Controllers\Grants\" />
     <None Remove="Controllers\Home\" />
+    <None Remove="Attributes\" />
+    <None Remove="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -45,5 +47,7 @@
     <Folder Include="Controllers\Diagnostics\" />
     <Folder Include="Controllers\Grants\" />
     <Folder Include="Controllers\Home\" />
+    <Folder Include="Attributes\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
 </Project>

@@ -14,6 +14,8 @@ using System.Threading.Tasks;
 using IdentityServer4.Validation;
 using System.Collections.Generic;
 using System;
+using MyPro.Identity.Api.Attributes;
+using MyPro.Identity.Api.Extensions;
 
 namespace IdentityServerHost.Quickstart.UI
 {

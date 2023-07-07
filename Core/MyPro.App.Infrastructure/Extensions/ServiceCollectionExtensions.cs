@@ -29,7 +29,7 @@ public static class ServiceCollectionExtensions
     {
         return services.AddSwaggerGen(options =>
                 {
-                    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Shopping API", Version = "v1" });
+                    options.SwaggerDoc("v1", new OpenApiInfo { Title = "MyPro API", Version = "v1" });
                     options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
                     {
                         Name = "Authorization",

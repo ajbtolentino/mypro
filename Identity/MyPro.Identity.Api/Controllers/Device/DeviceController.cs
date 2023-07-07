@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using MyPro.Identity.Api.Attributes;
 
 namespace IdentityServerHost.Quickstart.UI
 {

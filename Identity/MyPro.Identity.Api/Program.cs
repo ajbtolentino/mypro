@@ -17,6 +17,10 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddDefaultTokenProviders();
 
 builder.Services.AddIdentityServer()
+                //.AddInMemoryApiResources(Config.ApiResources)
+                //.AddInMemoryApiScopes(Config.ApiScopes)
+                //.AddInMemoryClients(Config.Clients)
+                //.AddTestUsers(Config.Users);
                 .AddDeveloperSigningCredential()
                 .AddAspNetIdentity<ApplicationUser>()
                 .AddConfigurationStore(options =>
@@ -46,6 +50,11 @@ using (var scope = app.Services.CreateScope())
 
 DatabaseInitializer.PopulateIdentityServer(app).Wait();
 
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+}
+
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
@@ -53,6 +62,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseIdentityServer();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
