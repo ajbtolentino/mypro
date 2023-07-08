@@ -37,8 +37,6 @@
     <None Remove="Attributes\" />
     <None Remove="Extensions\" />
     <None Remove="identityserver.db" />
-    <None Remove="identityserver.db-wal" />
-    <None Remove="identityserver.db-shm" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
