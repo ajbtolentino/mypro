@@ -6,9 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using MyPro.App.Core.Authentication;
 using MyPro.App.Core.Services;
-using MyPro.App.Infrastructure.Authentication;
 using MyPro.App.Infrastructure.Services;
 
 namespace MyPro.App.Infrastructure.Extensions;
@@ -22,6 +20,7 @@ public static class ServiceCollectionExtensions
         // Add services to the container.
         builder.Services.AddControllers();
 
+        // Add authentication
         builder.Services.AddMyProAuthentication(builder.Configuration, JwtBearerDefaults.AuthenticationScheme);
 
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -36,7 +35,7 @@ public static class ServiceCollectionExtensions
             app.UseSwagger();
             app.UseSwaggerUI(options =>
             {
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", $"{builder.Configuration.GetValue<string>("ApplicationName")}");
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", $"{builder.Configuration.GetApplicationName()}");
                 options.OAuthClientId("private-api");
                 options.OAuthScopes("read");
             });
@@ -82,6 +81,11 @@ public static class ServiceCollectionExtensions
                 });
     }
 
+    public static string GetApplicationName(this IConfiguration configuration)
+    {
+        return configuration.GetValue<string>("ApplicationName") ?? string.Empty;
+    }
+
     public static Uri GetWellKnownConfiguration(this IConfiguration configuration)
     {
         return new Uri($"{configuration.GetAuthorityUrl()}/.well-known/openid-configuration");
@@ -94,12 +98,7 @@ public static class ServiceCollectionExtensions
 
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        return services.AddServices(configuration).AddAuthentication(configuration);
-    }
-
-    public static IServiceCollection AddAuthentication(this IServiceCollection services, IConfiguration configuration)
-    {
-        return services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
+        return services.AddServices(configuration);
     }
 
     public static IServiceCollection AddServices(this IServiceCollection services, IConfiguration configuration)

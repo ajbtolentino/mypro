@@ -13,7 +13,7 @@ namespace MyPro.App.Infrastructure.Repositories
 
         public GenericRepository(DbContext dbContext)
         {
-            this.dbContext = dbContext;
+            this.dbContext = dbContext ?? throw new NullReferenceException(nameof(dbContext));
         }
 
         public async Task<TEntity> AddAsync(TEntity entity)
@@ -29,7 +29,7 @@ namespace MyPro.App.Infrastructure.Repositories
         {
             var entity = this.dbContext.Set<TEntity>().Find(id);
 
-            this.dbContext.Remove<TEntity>(entity);
+            this.dbContext.Remove<TEntity>(entity!);
 
             this.dbContext.SaveChanges();
         }

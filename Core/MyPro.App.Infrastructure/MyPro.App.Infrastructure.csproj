@@ -14,14 +14,12 @@
     <None Remove="DbContexts\" />
     <None Remove="Services\" />
     <None Remove="Extensions\" />
-    <None Remove="Authentication\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Repositories\" />
     <Folder Include="DbContexts\" />
     <Folder Include="Services\" />
     <Folder Include="Extensions\" />
-    <Folder Include="Authentication\" />
   </ItemGroup>
   <ItemGroup>
       <InternalsVisibleTo Include="MyPro.Todo.Infrastructure" />

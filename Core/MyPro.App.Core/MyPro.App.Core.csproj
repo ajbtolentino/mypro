@@ -11,14 +11,12 @@
     <None Remove="DbContexts\" />
     <None Remove="Repositories\" />
     <None Remove="Services\" />
-    <None Remove="Authentication\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
     <Folder Include="DbContexts\" />
     <Folder Include="Repositories\" />
     <Folder Include="Services\" />
-    <Folder Include="Authentication\" />
   </ItemGroup>
   <ItemGroup>
       <InternalsVisibleTo Include="MyPro.App.Infrastructure" />
