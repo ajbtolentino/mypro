@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MyPro.App.Core.Authentication;
@@ -12,6 +15,42 @@ namespace MyPro.App.Infrastructure.Extensions;
 
 public static class ServiceCollectionExtensions
 {
+    public static void RunMicroservice(this WebApplicationBuilder builder)
+    {
+        // Add services to the container.
+        builder.Services.AddControllers();
+
+        builder.Services.AddMyProAuthentication(builder.Configuration, JwtBearerDefaults.AuthenticationScheme);
+
+        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddMicroserviceSwaggerGen(builder.Configuration);
+
+        var app = builder.Build();
+
+        // Configure the HTTP request pipeline.
+        if (app.Environment.IsDevelopment())
+        {
+            app.UseSwagger();
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", $"{builder.Configuration.GetValue<string>("ApplicationName")}");
+                options.OAuthClientId("private-api");
+                options.OAuthScopes("read");
+            });
+        }
+
+        app.UseHttpsRedirection();
+
+        app.UseAuthentication();
+
+        app.UseAuthorization();
+
+        app.MapControllers();
+
+        app.Run();
+    }
+
     public static AuthenticationBuilder AddMyProAuthentication(this IServiceCollection services, IConfiguration configuration, string name)
     {
         return services.AddAuthentication(name)
@@ -29,7 +68,7 @@ public static class ServiceCollectionExtensions
     {
         return services.AddSwaggerGen(options =>
                 {
-                    options.SwaggerDoc("v1", new OpenApiInfo { Title = "MyPro API", Version = "v1" });
+                    options.SwaggerDoc("v1", new OpenApiInfo { Title = configuration.GetValue<string>("ApplicationName"), Version = "v1" });
                     options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
                     {
                         Name = "Authorization",
