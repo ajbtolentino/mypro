@@ -25,28 +25,28 @@ namespace IdentityServer
             {
                 Scopes =
                 {
-                    "read"
+                    "catalog.api.read"
                 }
             },
-            new ApiResource("order-api")
+            new ApiResource("cart-api")
             {
                 Scopes =
                 {
-                    "read"
+                    "cart.api.read"
                 }
             },
             new ApiResource("payment-api")
             {
                 Scopes =
                 {
-                    "read"
+                    "payment.api.read"
                 }
             },
             new ApiResource("gateway-api")
             {
                 Scopes =
                 {
-                    "read"
+                    "gateway.api.read"
                 }
             }
         };
@@ -54,7 +54,12 @@ namespace IdentityServer
         public static IEnumerable<ApiScope> ApiScopes =>
             new List<ApiScope>
             {
-                new ApiScope("read")
+                new ApiScope("catalog.api.read"),
+                new ApiScope("cart.api.read"),
+                new ApiScope("cart.api.write"),
+                new ApiScope("payment.api.read"),
+                new ApiScope("catalog.api.read"),
+                new ApiScope("gateway.api.read")
             };
 
         public static IEnumerable<Client> Clients =>
@@ -62,17 +67,22 @@ namespace IdentityServer
             {
                 new Client
                 {
-                    ClientId = "public-api",
-                    ClientName= "Public API - Web/Mobile to Server communication",
+                    ClientId = "public-client",
+                    ClientName= "Public Client - Web/Mobile to Server communication",
                     AllowedGrantTypes = GrantTypes.Code,
                     AllowedScopes = {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.Email,
-                        "read"
+                        "catalog.api.read",
+                        "cart.api.read",
+                        "cart.api.write",
+                        "payment.api.read",
+                        "gateway.api.read"
                     },
                     AllowedCorsOrigins =
                     {
+                        "http://localhost:4200",
                         "http://localhost:6001",
                         "http://localhost:7001",
                         "http://localhost:8001",
@@ -84,8 +94,13 @@ namespace IdentityServer
                     },
                     RedirectUris =
                     {
+                        "http://localhost:4200/signin-callback",
                         "https://localhost:6443/swagger/oauth2-redirect.html",
                         "https://www.getpostman.com/oauth2/callback"
+                    },
+                    PostLogoutRedirectUris =
+                    {
+                        "http://localhost:4200/signout-callback",
                     },
                     RequireClientSecret = false,
                     RequirePkce = true,
@@ -94,7 +109,7 @@ namespace IdentityServer
                 },
                 new Client
                 {
-                    ClientId = "private-api",
+                    ClientId = "private-client",
                     ClientName = "Private API - Machine to machine communication",
                     ClientSecrets = { new Secret("secret".Sha256()) },
                     RedirectUris = {
@@ -110,7 +125,11 @@ namespace IdentityServer
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
                     RequireClientSecret = true,
                     RequireConsent = false,
-                    AllowedScopes = { "read" },
+                    AllowedScopes = {
+                        "catalog.api.read",
+                        "cart.api.read",
+                        "payment.api.read"
+                    },
                     AllowedCorsOrigins =
                     {
                         "http://localhost:6001",
