@@ -40,8 +40,6 @@ public static class ServiceCollectionExtensions
             app.UseSwaggerUI(options =>
             {
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", $"{builder.Configuration.GetApplicationName()}");
-                options.OAuthClientId("private-api");
-                options.OAuthScopes("read");
             });
         }
 
@@ -110,6 +108,24 @@ public static class ServiceCollectionExtensions
                         Type = SecuritySchemeType.OpenIdConnect,
                         In = ParameterLocation.Header,
                         OpenIdConnectUrl = configuration.GetWellKnownConfiguration()
+                    });
+                    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+                    {
+                        {
+                            new OpenApiSecurityScheme
+                            {
+                                Reference = new OpenApiReference
+                                {
+                                    Type=ReferenceType.SecurityScheme,
+                                    Id="oauth2"
+                                },
+                                Scheme = "oauth2",
+                                Name = "Bearer",
+                                In = ParameterLocation.Header,
+
+                            },
+                            new string[]{}
+                        }
                     });
                 });
     }

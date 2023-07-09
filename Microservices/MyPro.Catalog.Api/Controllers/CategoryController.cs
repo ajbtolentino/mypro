@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyPro.Catalog.Api.DbContext;
 using MyPro.Catalog.Api.Entities;
 
 namespace MyPro.Catalog.Api.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     public class CategoryController : ControllerBase
     {
@@ -15,6 +17,7 @@ namespace MyPro.Catalog.Api.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult GetAll()
         {
             var categories = this.dbContext.Categories;
@@ -26,6 +29,7 @@ namespace MyPro.Catalog.Api.Controllers
         }
 
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public IActionResult Get([FromRoute] int id)
         {
             var category = this.dbContext.Categories.FirstOrDefault(_ => _.Id == id);

@@ -22,9 +22,6 @@ namespace MyPro.Identity.Api
 
             var context = serviceScope.ServiceProvider.GetRequiredService<ConfigurationDbContext>();
 
-            context.Database.EnsureDeleted();
-            context.Database.EnsureCreated();
-
             context.Database.Migrate();
 
             foreach (var client in Config.Clients)

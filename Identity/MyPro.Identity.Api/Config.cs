@@ -85,8 +85,8 @@ namespace IdentityServer
                         "http://localhost:8001",
                         "http://localhost:9001",
                         "https://localhost:6443",
+                        "https://localhost:7443",
                         "https://localhost:8443",
-                        "https://localhost:6443",
                         "https://localhost:9443"
                     },
                     RedirectUris =

@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyPro.Catalog.Api.DbContext;
 
 namespace MyPro.Catalog.Api.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     public class ProductController : ControllerBase
     {
@@ -18,20 +17,27 @@ namespace MyPro.Catalog.Api.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult GetAll()
         {
             return Ok(dbContext.Products);
         }
 
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public IActionResult Get([FromRoute] int id)
         {
             return Ok(this.dbContext.Products.FirstOrDefault(_ => _.Id == id));
         }
 
+        public record NewProduct([Required]string name, string description, int category, decimal price);
+
         [HttpPost]
-        public IActionResult Post()
+        public IActionResult Post([FromBody] NewProduct newProduct)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             return Ok();
         }
 
