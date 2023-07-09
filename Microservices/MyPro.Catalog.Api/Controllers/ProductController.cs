@@ -30,7 +30,15 @@ namespace MyPro.Catalog.Api.Controllers
             return Ok(this.dbContext.Products.FirstOrDefault(_ => _.Id == id));
         }
 
-        public record NewProduct([Required]string name, string description, int category, decimal price);
+        public record NewProduct(
+            [Required]
+            string name,
+            [Required]
+            string description,
+            [Required]
+            int category,
+            [Required]
+            decimal price);
 
         [HttpPost]
         public IActionResult Post([FromBody] NewProduct newProduct)
