@@ -56,9 +56,7 @@ namespace IdentityServer
             {
                 new ApiScope("catalog.api.read"),
                 new ApiScope("cart.api.read"),
-                new ApiScope("cart.api.write"),
                 new ApiScope("payment.api.read"),
-                new ApiScope("catalog.api.read"),
                 new ApiScope("gateway.api.read")
             };
 
@@ -75,7 +73,6 @@ namespace IdentityServer
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.Email,
                         "catalog.api.read",
-                        "cart.api.read",
                         "cart.api.write",
                         "payment.api.read",
                         "gateway.api.read"

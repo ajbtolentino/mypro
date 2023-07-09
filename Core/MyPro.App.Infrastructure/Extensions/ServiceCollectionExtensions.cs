@@ -41,6 +41,8 @@ public static class ServiceCollectionExtensions
             });
         }
 
+
+
         app.UseHttpsRedirection();
 
         app.UseAuthentication();
