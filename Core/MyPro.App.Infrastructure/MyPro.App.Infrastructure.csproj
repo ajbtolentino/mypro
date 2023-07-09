@@ -22,9 +22,10 @@
     <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>
-      <InternalsVisibleTo Include="MyPro.Todo.Infrastructure" />
       <InternalsVisibleTo Include="MyPro.Identity.Api" />
-      <InternalsVisibleTo Include="MyPro.Shopping.Api" />
+      <InternalsVisibleTo Include="MyPro.Catalog.Api" />
+      <InternalsVisibleTo Include="MyPro.Cart.Api" />
+      <InternalsVisibleTo Include="MyPro.Payment.Api" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\MyPro.App.Core\MyPro.App.Core.csproj" />
@@ -37,5 +38,6 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.8" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.8" />
   </ItemGroup>
 </Project>

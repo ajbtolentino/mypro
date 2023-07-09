@@ -80,4 +80,22 @@ Global
 		{DFC970A8-F211-4CE4-899B-9EDB201B1DC1} = {8C77D513-30F2-467B-B8A2-464BEF643C28}
 		{7AB570D8-80C5-41F5-B85B-34EB0C9D1842} = {A28C1186-E9B2-43B1-829C-B8E1EC6F78AB}
 	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = PrefixedHierarchical
+		$0.TextStylePolicy = $2
+		$2.FileWidth = 80
+		$2.TabsToSpaces = True
+		$2.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $3
+		$3.scope = text/x-csharp
+		$0.TextStylePolicy = $4
+		$4.FileWidth = 80
+		$4.TabsToSpaces = True
+		$4.scope = text/plain
+		$0.TextStylePolicy = $5
+		$5.inheritsSet = null
+		$5.scope = text/x-cshtml-web
+	EndGlobalSection
 EndGlobal

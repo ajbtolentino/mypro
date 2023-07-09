@@ -1,3 +1,4 @@
 ﻿using MyPro.App.Infrastructure.Extensions;
 
-WebApplication.CreateBuilder(args).RunMicroservice();
+var app = WebApplication.CreateBuilder(args).BuildMicroservice();
+app.Run();

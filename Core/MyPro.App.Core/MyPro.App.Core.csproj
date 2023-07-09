@@ -20,8 +20,9 @@
   </ItemGroup>
   <ItemGroup>
       <InternalsVisibleTo Include="MyPro.App.Infrastructure" />
-      <InternalsVisibleTo Include="MyPro.Todo.Infrastructure" />
       <InternalsVisibleTo Include="MyPro.Identity.Api" />
-      <InternalsVisibleTo Include="MyPro.Shopping.Api" />
+      <InternalsVisibleTo Include="MyPro.Catalog.Api" />
+      <InternalsVisibleTo Include="MyPro.Cart.Api" />
+      <InternalsVisibleTo Include="MyPro.Payment.Api" />
   </ItemGroup>
 </Project>

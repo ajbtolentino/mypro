@@ -1,12 +1,16 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using MyPro.App.Core.DbContexts;
 using MyPro.App.Core.Services;
+using MyPro.App.Infrastructure.DbContexts;
 using MyPro.App.Infrastructure.Services;
 
 namespace MyPro.App.Infrastructure.Extensions;
@@ -15,7 +19,7 @@ public static class ServiceCollectionExtensions
 {
     public const string CONFIG_KEY_AUTHORITY_URL = "AuthorityUrl";
 
-    public static void RunMicroservice(this WebApplicationBuilder builder)
+    public static WebApplication BuildMicroservice(this WebApplicationBuilder builder)
     {
         // Add services to the container.
         builder.Services.AddControllers();
@@ -41,8 +45,6 @@ public static class ServiceCollectionExtensions
             });
         }
 
-
-
         app.UseHttpsRedirection();
 
         app.UseAuthentication();
@@ -51,7 +53,36 @@ public static class ServiceCollectionExtensions
 
         app.MapControllers();
 
-        app.Run();
+        return app;
+    }
+
+    public static IServiceCollection AddDatabase<TDbContext>(this IServiceCollection services, IConfiguration configuration)
+        where TDbContext : ApplicationDbContext
+    {
+        var connectionString = configuration.GetConnectionString("Sqlite");
+        services.AddSqlite<TDbContext>(connectionString);
+        services.AddDbContext<TDbContext>(options =>
+        {
+            var connection = new SqliteConnection(connectionString);
+            connection.Open();
+
+            options.UseSqlite(connection);
+        });
+        return services;
+    }
+
+    public static void Migrate<TDbContext>(this WebApplication app)
+        where TDbContext : ApplicationDbContext
+    {
+        // Migrate latest database changes during startup
+        using (var scope = app.Services.CreateScope())
+        {
+            var dbContext = scope.ServiceProvider
+                .GetRequiredService<TDbContext>();
+
+            // Here is the migration executed
+            dbContext.Database.Migrate();
+        }
     }
 
     public static AuthenticationBuilder AddMyProAuthentication(this IServiceCollection services, IConfiguration configuration, string name)

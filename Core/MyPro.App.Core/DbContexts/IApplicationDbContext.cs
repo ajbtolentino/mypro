@@ -3,9 +3,10 @@ using System.Collections.Generic;
 
 namespace MyPro.App.Core.DbContexts
 {
-    internal interface IApplicationDbContext
+    public interface IApplicationDbContext
     {
-        Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+        int SaveChanges();
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 }
 

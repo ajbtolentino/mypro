@@ -1,29 +1,51 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using MyPro.Catalog.Api.DbContext;
+using MyPro.Catalog.Api.Entities;
 
 namespace MyPro.Catalog.Api.Controllers
 {
     [Route("api/[controller]")]
     public class CategoryController : ControllerBase
     {
+        private readonly ICatalogDbContext dbContext;
+
+        public CategoryController(ICatalogDbContext dbContext)
+        {
+            this.dbContext = dbContext;
+        }
+
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok();
+            var categories = this.dbContext.Categories;
+
+            if (!categories.Any())
+                return NotFound();
+
+            return Ok(categories);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetAll([FromRoute] string id)
+        public IActionResult Get([FromRoute] int id)
         {
-            return Ok(id);
+            var category = this.dbContext.Categories.FirstOrDefault(_ => _.Id == id);
+
+            if (category == null)
+                return NotFound();
+
+            return Ok(category);
         }
 
         [HttpPost]
-        public IActionResult Post()
+        public async Task<IActionResult> Post([FromBody] string name)
         {
+            this.dbContext.Categories.Add(new Category
+            {
+                Name = name
+            });
+
+            await this.dbContext.SaveChangesAsync();
+
             return Ok();
         }
 
